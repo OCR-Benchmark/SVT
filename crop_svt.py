@@ -45,12 +45,12 @@ def visualize(xml_file, crop_save_dir, tags_file):
             image = crop_rectangle(image, x, y, width, height, margin_ratio=MARGIN_RATIO)
             save_path = os.path.join(crop_save_dir, image_path.split("/")[-1].replace(".jpg", "_{}.jpg".format(i)))
             cv2.imwrite(save_path, image)
-            tags_fo.write("{} {}\n".format(os.path.abspath(save_path), tag))
+            tags_fo.write("{} {}\n".format(save_path, tag))
 
     tags_fo.close()
     print(count)
 
 
-# visualize(TRAIN_XML, TRAIN_CROP_DIR, TRAIN_TAGS)
-visualize(TEST_XML, TEST_CROP_DIR, TEST_TAGS)
+visualize(TRAIN_XML, TRAIN_CROP_DIR, TRAIN_TAGS)
+# visualize(TEST_XML, TEST_CROP_DIR, TEST_TAGS)
 
